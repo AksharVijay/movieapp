@@ -1,0 +1,10 @@
+.titlehead{
+    padding: 20px;
+    margin: 10px 0px ;
+    border-bottom: 2px solid #000000;
+}
+
+.title{
+    font-size: 24px;
+    color: #000000;
+}
