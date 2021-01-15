@@ -1,14 +1,20 @@
 import React, { Fragment } from 'react';
 import Search from '../Search/Search';
-import CssClasses  from './Title.module.css';
+import './Title.css';
 
 
 const Title = (props) => {
     return (
         <Fragment>
-            <div className ={CssClasses.titlehead } >
-                <h3 className = { CssClasses.title }>WOOKIE <br/> MOVIES</h3>
-                <Search {...props} />
+            <div className ="conatiner">
+                <div className ="row titlehead">
+                    <div className="col-6">
+                        <h3 className = "title">WOOKIE <br/> MOVIES</h3>
+                    </div>
+                    <div className = "col-6 searchMovie">
+                        <Search {...props} />
+                    </div>
+                </div>
             </div>
         </Fragment>
     )
