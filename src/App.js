@@ -5,14 +5,14 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './Home/Home';
 import Details from './Details/Details';
 
-function App() {
+function App(props) {
   return (
     <BrowserRouter>
         <div className="App">
           <Navbar/>
-          <Switch>
+          <Switch >
             <Route path="/" exact component ={Home}/>
-            <Route path="/Details" component = { Details }/>
+            <Route path="/Details/:slug" component = { Details }/>
           </Switch>
         </div>
     </BrowserRouter>

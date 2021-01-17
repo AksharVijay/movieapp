@@ -1,14 +1,13 @@
-import React, { useState} from 'react';
+import React  from 'react';
 import './Search.css';
 
 const Search = () => {
 
-    const [ searchRes, setSearchRes ] = useState([]);
-
     return (
         <div className="search" >
-                <input type="text" />                
-                <i class="fas fa-search"></i>
+                <input className = "form-control" type="text" />                
+                {/* <i className="fas fa-search"></i> */}
+                <button className ="btn btn-info">Search</button>
                 <div className ="searchres">
                 </div>
         </div>
