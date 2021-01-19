@@ -6,9 +6,14 @@ import axios from 'axios';
 
  class Home extends Component {
 
-    state = {
-        movies : [],
-        genres : {}
+    constructor(props){
+        super(props);
+        this.state = {
+            allMovies : [],
+            crimeMovies : [],
+            dramaMovies : [],
+            actionMovies : []
+        }
     }
      componentDidMount (){
         const token = 'Bearer Wookie2019';
@@ -17,36 +22,33 @@ import axios from 'axios';
               'Authorization': token
             }
           }).then(response => {
-              let movies = this.setState({movies: response.data.movies})
-             console.log(response);
-         });
+            const { data: {movies} } = response;
+            this.setState({
+              allMovies: movies,
+              crimeMovies: movies.filter(movies => movies.genres === 'Crime'),
+              dramaMovies: movies.filter(movies => movies.genres === 'Drama'),
+              actionMovies: movies.filter(movies => movies.genres === 'Action'),
+          });
+         console.log(response);
+       });
 
 
      }
 
     render() {
 
-        const {genres} = this.state;
-
-        let genreCat = () => {
-            this.setState({movies : this.state.genres})
-        }
-
-        let filterCrime = () => {
-            const crimeMovie = genres.filter( (genre) => genre.genres.includes("Crime"));
-    
-            this.setState({ filterCrime : crimeMovie});
-        }
-
-        const movies = this.state.movies.map(movie => {
+        const movies = this.state.allMovies.map(movie => {
+            return <MovieList key = {movie.id} title = {movie.title} poster = {movie.poster} genres = { movie.genres} slug ={movie.slug}/>
+        })
+        const criMovies = this.state.crimeMovies.map(movie => {
             return <MovieList key = {movie.id} title = {movie.title} poster = {movie.poster} genres = { movie.genres} />
         })
-
 
         return (
             <div>
                 <Title/>
                 {movies}
+                {criMovies}
             </div>
 
         )

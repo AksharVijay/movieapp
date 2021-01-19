@@ -3,18 +3,10 @@ import { Link, withRouter } from 'react-router-dom';
 
 class MovieList extends Component {
     handleClick = () => {
-        // const { history: { push } } = this.props;
-        // push('/Details/movie.slug');
-        // // this.props.history.push('/Details/movie.slug')
         const { history, movie } = this.props;
-        if(history) history.push({
-            pathname : `/${this.props.slug}`,
-            state : movie
-        });
+        if(history) history.push(`/Details/${this.props.slug}`);
     }
         render () {
-            const {  history } = this.props;
-            //const { movie } = this.props;
             return (
 
                 <div onClick = { this.handleClick}>
@@ -23,10 +15,9 @@ class MovieList extends Component {
                         <div className =" row d-flex align-items-center mt-4 mb-4">
 
                             <div className ="image-container d-flex justify-content-start m-3">
-                                 {/* <Link  to={`/Details/:${this.props.movie.slug}`}> */}
-                                 {/* <Link to="/Details"> */}
+                            <Link  to={`/Details/:${this.props.slug}`}>
                                     <img src={this.props.poster} alt='movie' className="imgpos"></img>
-                                {/* </Link>   */}
+                                </Link>  
                             </div>
                         </div>
                     </div>            

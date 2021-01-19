@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './Home/Home';
 import Details from './Details/Details';
 
-function App(props) {
+function App() {
   return (
     <BrowserRouter>
         <div className="App">
